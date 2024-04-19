@@ -35,3 +35,13 @@ class Solution:
             if len(hashSet) == 3:
                 cnt += (1 + min(hashSet.values()))
         return cnt 
+# Solution 4 
+class Solution:
+    def numberOfSubstrings(self, s: str) -> int:
+        cnt = 0
+        lastSeen = [-1, -1, -1]
+        for i in range(len(s)):
+            lastSeen[ord(s[i]) - 97] = i
+            cnt += (1 + min(lastSeen))
+        return cnt
+        
