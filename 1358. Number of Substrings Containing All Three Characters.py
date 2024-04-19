@@ -24,3 +24,14 @@ class Solution:
                     cnt += (n-j)
                     break
         return cnt
+# Solution 3 Optimal Solution
+# Time Complexity is O(n)
+class Solution:
+    def numberOfSubstrings(self, s: str) -> int:
+        cnt = 0
+        hashSet = {}
+        for i in range(len(s)):
+            hashSet[s[i]] = i
+            if len(hashSet) == 3:
+                cnt += (1 + min(hashSet.values()))
+        return cnt 
