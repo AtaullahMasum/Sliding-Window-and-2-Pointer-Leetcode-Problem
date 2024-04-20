@@ -16,3 +16,22 @@ class Solution:
 
     def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
         return self.helper(nums, goal) - self.helper(nums, goal-1)
+# Using PreFix sum
+# Time Complexity is O(n)
+# Space Complexity is O(n)
+class Solution:
+
+    def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
+        hashMap = {0: 1}
+        preSum = 0
+        cnt = 0
+        for num in nums:
+            preSum += num
+            if preSum - goal in hashMap:
+                cnt += hashMap[preSum - goal]
+            if preSum in hashMap:
+                hashMap[preSum] += 1
+            else:
+                hashMap[preSum] = 1
+        return cnt
+         
