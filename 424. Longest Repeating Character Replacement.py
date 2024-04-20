@@ -52,3 +52,20 @@ class Solution:
                 maxlen = max(maxlen, (r-l+1))
             r += 1
         return maxlen   
+# Optimal Solution 
+# Time Complexity is O(n)
+# Space Complexity is O(26)
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+        maxlen , l, r, maxfreq = 0, 0, 0, 0
+        hashMap = [0]*26
+        while r < len(s):
+            hashMap[ord(s[r])-ord('A')] += 1
+            maxfreq = max(maxfreq,  hashMap[ord(s[r])-ord('A')])
+            if ((r - l + 1) - maxfreq) > k:
+                hashMap[ord(s[l])- ord('A')] -= 1
+                l += 1
+            if ((r-l+1) - maxfreq) <= k:
+                maxlen = max(maxlen, (r-l+1))
+            r += 1
+        return maxlen
