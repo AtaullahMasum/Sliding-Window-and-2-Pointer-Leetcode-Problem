@@ -9,11 +9,11 @@ class Solution:
             hashMap = [0]*256
             cnt = 0
             for j in range(m):
-                hashMap[ord(t[j]) - 256] += 1
+                hashMap[ord(t[j]) ] += 1
             for j in range(i, n):  
-                if hashMap[ord(s[j]) - 256]> 0:
+                if hashMap[ord(s[j])]> 0:
                     cnt += 1
-                hashMap[ord(s[j]) - 256]  -= 1
+                hashMap[ord(s[j])]  -= 1
                 if cnt == m:
                     if (j - i + 1) < minLen:
                         minLen = j - i + 1
